@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background: var(--body-bg-color);
+    margin: auto;
+    line-height: 1.75;
+    font-weight: 900;
+    word-spacing: 1.5px;
+    font-family: 'Lato',sans-serif;
+    font-weight: 300;
+}
+/* === css variables === */
+:root {
+    --header-bg-color: #4a7799;
+    --textarea-bg-color: rgb(250, 246, 246);
+    --body-bg-color: rgb(210, 214, 210);
+    --nav-link-color: #bbb;
+}
+
+/* === header style === */
+header {
+    background: var(--header-bg-color);
+    text-align:center
+}
+
+h1,
+h2 {
+    margin: 20px;
+    font-weight: 300;
+    font-family: Nunito;
+}
+
+.menu-container {
+    padding:25px;
+}
+
+.nav-link {
+    text-decoration: none;
+    font-size: 22px;
+    padding: 5 5px;
+    color: var(--nav-link-color);
+    font-weight: 400;
+}
+
+
+@media (max-width:600px) {
+
+    .menu-container {
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    h1{
+        font-size: 22px;
+    }
+
+    .nav-lists {
+        flex-direction: column;
+    }
+
+    textarea {
+        width: 100%;
+    }
+
+}
+
+.btn {
+    width: 100px;
+    height: 40px;
+    background: var(--header-bg-color);
+    color: var(--nav-link-color);
+    font-size: 20px;
+    margin: 5px;
+    border: 1px solid var(--header-bg-color);
+    font-family: Lato;
+    cursor: pointer;
+}
+
+.btn:focus {
+    outline: 2px solid #2a70a5;
+    cursor: pointer;
+}
+
+.indexclass{
+    background-color: black;
+}
+.form{
+    text-align: center;
+}
+.topic{
+    margin: 20px;
+    width: 50%;
+    height: 30px;
+}
+.date{
+    margin: 20px;
+    width: auto;
+    height: 30px;
+}
+
+
+/* table */
+
+table{
+    width:100%;
+    table-layout: fixed;
+  }
+  .tbl-header{
+    background-color: rgba(67, 117, 135, 0.3);
+   }
+  .tbl-content{
+    height:300px;
+    overflow-x:auto;
+    margin-top: 0px;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  th{
+    padding: 20px 15px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    text-transform: uppercase;
+  }
+  td{
+    padding: 15px;
+    text-align: left;
+    vertical-align:middle;
+    font-weight: 300;
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+    border-bottom: solid 1px rgba(255,255,255,0.1);
+  }
