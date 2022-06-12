@@ -1,35 +1,34 @@
-from ssl import ALERT_DESCRIPTION_ACCESS_DENIED
 from flask import Flask, render_template, request, redirect, url_for,session
 import os
-MONGODB_URI ='mongodb+srv://fuad:<password>@todopy.z78my1s.mongodb.net/?retryWrites=true&w=majority'
+import pymongo
+MONGODB_URI ='mongodb+srv://fuad:Fuad@todopy.z78my1s.mongodb.net/?retryWrites=true&w=majority'
 client = pymongo.MongoClient(MONGODB_URI)
+db = client.TODOpy
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
-
-
-# cur = mysql.connection.cursor()
-# cur.execute("INSERT INTO MyUsers(firstName, lastName) VALUES (%s, %s)", (firstName, lastName))
-# mysql.connection.commit()
-# cur.close()
-
 
 todo_list = list()
 @app.route('/' , methods= ['GET','POST']) # this decorator create the home route
 def home():
     if request.method == 'GET':
+        show_data()
         return render_template('index.html', title='TODOpy',todo_list=todo_list)
     if request.method == 'POST':
         topic = request.form['topic']
-        date_due = request.form['date']
-        if topic and date_due != '':
-            add_dic(topic,date_due)
+        due_date = request.form['date']
+        if topic and due_date != '':
+            db.tasks.insert_one({'topic': topic, 'due_date': due_date})
+            show_data()
             return redirect('/')
         else:
+            show_data()
             return render_template('index.html', title='TODOpy',todo_list=todo_list)
 
-def add_dic(topic,date_due):
-    todo_list.append((topic,date_due))
-    #print(todo_list)
+def show_data():
+    collection = db['tasks']
+    datas = collection.find({})
+    for data in datas:
+        todo_list.append((data['topic'],data['due_date']))
 
 
 if __name__ == '__main__':
