@@ -1,14 +1,11 @@
 from ssl import ALERT_DESCRIPTION_ACCESS_DENIED
 from flask import Flask, render_template, request, redirect, url_for,session
 import os
-
+MONGODB_URI ='mongodb+srv://fuad:<password>@todopy.z78my1s.mongodb.net/?retryWrites=true&w=majority'
+client = pymongo.MongoClient(MONGODB_URI)
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'root'
-app.config['MYSQL_DB'] = 'MyDB'
 
 # cur = mysql.connection.cursor()
 # cur.execute("INSERT INTO MyUsers(firstName, lastName) VALUES (%s, %s)", (firstName, lastName))
