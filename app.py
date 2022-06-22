@@ -3,7 +3,8 @@ from flask import Flask, render_template, request, redirect, url_for, session
 import os
 import pymongo
 from bson.objectid import ObjectId
-MONGODB_URI = 'mongodb+srv://fuad:Fuad@todopy.z78my1s.mongodb.net/?retryWrites=true&w=majority'
+from dbc import URI
+MONGODB_URI = URI
 client = pymongo.MongoClient(MONGODB_URI)
 db = client.TODOpy
 app = Flask(__name__)
