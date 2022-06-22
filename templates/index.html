@@ -22,7 +22,8 @@
           <button class="btn2">Update</button>
         </form>
         <form method="POST" action="{{ url_for('delete', id=task['_id']) }}">
-          <button class="btn2">Delete</button>
+          <button class="btn2" onclick="confirm('Are you sure you want to delete this task?')">Delete</button>
+
         </form>
       </td>
     </tr>
