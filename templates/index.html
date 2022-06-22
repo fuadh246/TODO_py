@@ -13,13 +13,16 @@
       <th>Due Date</th>
     </tr>
     <tr>
-      {% for todo in todo_list%}
+      {% for task in tasks%}
     <tr>
-      <td>{{todo[0]}}</td>
-      <td>{{todo[1]}}</td>
+      <td>{{task['topic']}}</td>
+      <td>{{task['due_date']}}</td>
       <td id="button_table">
         <form action="{{url_for('update')}}" , method="POST" class="form">
           <button class="btn2">Update</button>
+        </form>
+        <form method="POST" action="{{ url_for('delete', id=task['_id']) }}">
+          <button class="btn2">Delete</button>
         </form>
       </td>
     </tr>
